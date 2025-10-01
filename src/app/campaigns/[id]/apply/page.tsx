@@ -129,7 +129,9 @@ export default function ApplyPage() {
 
               {submitError && (
                 <div className="rounded-md bg-rose-50 dark:bg-rose-900/20 border border-rose-200 dark:border-rose-800 p-4">
-                  <p className="text-sm text-rose-600 dark:text-rose-400">{submitError.message}</p>
+                  <p className="text-sm text-rose-600 dark:text-rose-400">
+                    {submitError instanceof Error ? submitError.message : '지원 중 오류가 발생했습니다.'}
+                  </p>
                 </div>
               )}
 
