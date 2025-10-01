@@ -143,7 +143,7 @@ function InfluencerOnboarding() {
                 <input
                   type="number"
                   placeholder="팔로워 수"
-                  value={channel.followerCount === "" ? "" : channel.followerCount}
+                  value={typeof channel.followerCount === "string" && channel.followerCount === "" ? "" : channel.followerCount}
                   onChange={(e) => handleChannelChange(index, "followerCount", e.target.value === "" ? ("" as unknown as number) : parseInt(e.target.value, 10))}
                   min="0"
                   required
