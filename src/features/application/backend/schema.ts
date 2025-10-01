@@ -66,3 +66,10 @@ export const SelectApplicationsRequestSchema = z.object({
 });
 
 export type SelectApplicationsRequest = z.infer<typeof SelectApplicationsRequestSchema>;
+
+export const ApplicationStatusResponseSchema = z.object({
+  hasApplied: z.boolean(),
+  applicationStatus: ApplicationStatusSchema.optional(),
+});
+
+export type ApplicationStatusResponse = z.infer<typeof ApplicationStatusResponseSchema>;

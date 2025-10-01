@@ -26,7 +26,7 @@ export default function ApplyPage() {
   const { requireAuth } = useAuth();
 
   const { data: campaign, isLoading: campaignLoading } = useCampaignById(campaignId);
-  const { mutate: createApplication, isPending, isSuccess } = useCreateApplication();
+  const { mutate: createApplication, isPending, isSuccess, error: submitError } = useCreateApplication();
 
   const form = useForm<ApplicationFormData>({
     resolver: zodResolver(CreateApplicationRequestSchema),
@@ -126,6 +126,12 @@ export default function ApplyPage() {
                   </FormItem>
                 )}
               />
+
+              {submitError && (
+                <div className="rounded-md bg-rose-50 dark:bg-rose-900/20 border border-rose-200 dark:border-rose-800 p-4">
+                  <p className="text-sm text-rose-600 dark:text-rose-400">{submitError.message}</p>
+                </div>
+              )}
 
               <div className="flex gap-4">
                 <Button type="button" variant="outline" onClick={() => router.back()} className="flex-1">

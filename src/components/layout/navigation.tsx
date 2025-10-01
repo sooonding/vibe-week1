@@ -4,7 +4,9 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useCurrentUser } from '@/features/auth/hooks/useCurrentUser';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { getSupabaseBrowserClient } from '@/lib/supabase/browser-client';
+import { Building2, UserCircle } from 'lucide-react';
 
 export function Navigation() {
   const pathname = usePathname();
@@ -22,68 +24,81 @@ export function Navigation() {
   const isActive = (path: string) => pathname === path || pathname.startsWith(path + '/');
 
   return (
-    <nav className="border-b bg-white">
-      <div className="container mx-auto px-4 max-w-6xl">
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center gap-8">
-            <Link href="/" className="text-xl font-bold text-slate-900">
-              체험단
+    <nav className='fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-700/50'>
+      <div className='mx-auto px-6 max-w-[1400px]'>
+        <div className='flex h-20 items-center justify-between'>
+          <div className='flex items-center gap-10'>
+            <Link
+              href='/'
+              className='text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent hover:scale-105 transition-transform duration-300'
+            >
+              체험단 ✨
             </Link>
 
-            <div className="flex gap-4">
-              <Link
-                href="/"
-                className={`text-sm font-medium transition-colors hover:text-slate-900 ${
-                  pathname === '/' ? 'text-slate-900' : 'text-slate-600'
-                }`}
-              >
-                홈
-              </Link>
+            {isAuthenticated && (
+              <div className='flex items-center gap-6'>
+                {user?.role === 'influencer' && (
+                  <Link
+                    href='/applications/me'
+                    className={`text-base font-semibold transition-all duration-300 px-4 py-2 rounded-xl ${
+                      isActive('/applications/me')
+                        ? 'text-primary bg-primary/10'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                    }`}
+                  >
+                    내 지원 목록
+                  </Link>
+                )}
 
-              {isAuthenticated && user?.role === 'influencer' && (
-                <Link
-                  href="/applications/me"
-                  className={`text-sm font-medium transition-colors hover:text-slate-900 ${
-                    isActive('/applications/me') ? 'text-slate-900' : 'text-slate-600'
-                  }`}
-                >
-                  내 지원 목록
-                </Link>
-              )}
-
-              {isAuthenticated && user?.role === 'advertiser' && (
-                <Link
-                  href="/dashboard/campaigns"
-                  className={`text-sm font-medium transition-colors hover:text-slate-900 ${
-                    isActive('/dashboard/campaigns') ? 'text-slate-900' : 'text-slate-600'
-                  }`}
-                >
-                  체험단 관리
-                </Link>
-              )}
-            </div>
+                {user?.role === 'advertiser' && (
+                  <Link
+                    href='/dashboard/campaigns'
+                    className={`text-base font-semibold transition-all duration-300 px-4 py-2 rounded-xl ${
+                      isActive('/dashboard/campaigns')
+                        ? 'text-primary bg-primary/10'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                    }`}
+                  >
+                    체험단 관리
+                  </Link>
+                )}
+              </div>
+            )}
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className='flex items-center gap-3'>
+            <ThemeToggle />
             {!isAuthenticated ? (
               <>
-                <Link href="/login">
-                  <Button variant="ghost" size="sm">
+                <Link href='/login'>
+                  <Button variant='ghost' size='lg' className='font-semibold rounded-xl'>
                     로그인
                   </Button>
                 </Link>
-                <Link href="/signup">
-                  <Button size="sm">회원가입</Button>
+                <Link href='/signup'>
+                  <Button size='lg' className='font-semibold rounded-xl shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 transition-all duration-300'>
+                    회원가입 🎉
+                  </Button>
                 </Link>
               </>
             ) : (
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-slate-600">
-                  {user?.name}님
-                  {user?.role === 'advertiser' && ' (광고주)'}
-                  {user?.role === 'influencer' && ' (인플루언서)'}
-                </span>
-                <Button variant="ghost" size="sm" onClick={handleLogout}>
+              <div className='flex items-center gap-3'>
+                <div className='flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20'>
+                  {user?.role === 'advertiser' ? (
+                    <Building2 className='h-4 w-4 text-primary' />
+                  ) : (
+                    <UserCircle className='h-4 w-4 text-primary' />
+                  )}
+                  <span className='text-sm font-semibold text-foreground'>
+                    {user?.name}
+                  </span>
+                </div>
+                <Button
+                  variant='ghost'
+                  size='lg'
+                  onClick={handleLogout}
+                  className='font-semibold rounded-xl'
+                >
                   로그아웃
                 </Button>
               </div>

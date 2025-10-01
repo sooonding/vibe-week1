@@ -9,6 +9,7 @@ import type {
   ApplicationRow,
   ApplicationDetailResponse,
   SelectApplicationsRequest,
+  ApplicationStatusResponse,
 } from './schema';
 import { ApplicationRowSchema } from './schema';
 
@@ -254,4 +255,36 @@ export const selectApplications = async (
   }
 
   return success({ success: true });
+};
+
+export const checkApplicationStatus = async (
+  client: SupabaseClient,
+  userId: string,
+  campaignId: number,
+): Promise<HandlerResult<ApplicationStatusResponse, ApplicationServiceError, unknown>> => {
+  const { data: influencerData, error: influencerError } = await client
+    .from('influencer_profiles')
+    .select('id')
+    .eq('user_id', userId)
+    .maybeSingle();
+
+  if (influencerError || !influencerData) {
+    return success({ hasApplied: false });
+  }
+
+  const { data, error } = await client
+    .from('applications')
+    .select('id, status')
+    .eq('campaign_id', campaignId)
+    .eq('influencer_id', influencerData.id)
+    .maybeSingle();
+
+  if (error || !data) {
+    return success({ hasApplied: false });
+  }
+
+  return success({
+    hasApplied: true,
+    applicationStatus: data.status as 'pending' | 'selected' | 'rejected',
+  });
 };
