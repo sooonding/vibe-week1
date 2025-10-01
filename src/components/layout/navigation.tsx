@@ -32,7 +32,7 @@ export function Navigation() {
               href='/'
               className='text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 whitespace-nowrap'
             >
-              체험단
+              브릿지 플랫폼
             </Link>
 
             {isAuthenticated && (
@@ -59,7 +59,7 @@ export function Navigation() {
                         : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                     }`}
                   >
-                    관리
+                    체험단 대시보드(광고주)
                   </Link>
                 )}
               </div>
@@ -71,12 +71,19 @@ export function Navigation() {
             {!isAuthenticated ? (
               <>
                 <Link href='/login'>
-                  <Button variant='ghost' size='sm' className='font-semibold rounded-xl text-sm md:text-base px-3 md:px-4'>
+                  <Button
+                    variant='ghost'
+                    size='sm'
+                    className='font-semibold rounded-xl text-sm md:text-base px-3 md:px-4'
+                  >
                     로그인
                   </Button>
                 </Link>
                 <Link href='/signup'>
-                  <Button size='sm' className='font-semibold rounded-xl shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 transition-all duration-300 text-sm md:text-base px-3 md:px-4'>
+                  <Button
+                    size='sm'
+                    className='font-semibold rounded-xl shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 transition-all duration-300 text-sm md:text-base px-3 md:px-4'
+                  >
                     회원가입
                   </Button>
                 </Link>

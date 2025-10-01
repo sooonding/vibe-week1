@@ -42,21 +42,36 @@ export default function HomePage({ params }: HomePageProps) {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
-            <Link href="/signup" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-2xl shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 hover:scale-105 transition-all duration-300">
-                지금 시작하기
+            {!isAuthenticated ? (
+              <>
+                <Link href="/signup" className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-2xl shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 hover:scale-105 transition-all duration-300">
+                    지금 시작하기
+                  </Button>
+                </Link>
+                <Link href="/login" className="w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-2xl hover:bg-primary/10 transition-all duration-300">
+                    로그인
+                  </Button>
+                </Link>
+              </>
+            ) : (
+              <Button
+                size="lg"
+                onClick={() => {
+                  const element = document.getElementById('campaigns-section');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-2xl shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 hover:scale-105 transition-all duration-300"
+              >
+                체험단 둘러보기 👀
               </Button>
-            </Link>
-            <Link href="/login" className="w-full sm:w-auto">
-              <Button variant="outline" size="lg" className="w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-2xl hover:bg-primary/10 transition-all duration-300">
-                로그인
-              </Button>
-            </Link>
+            )}
           </div>
         </section>
 
         {/* 모집 중인 체험단 섹션 */}
-        <section>
+        <section id="campaigns-section">
           <header className="mb-8 md:mb-12 text-center px-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-3 md:mb-4">
               모집 중인 체험단 🎯
