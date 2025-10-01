@@ -1,0 +1,75 @@
+
+> template@0.1.0 build
+> next build
+
+   ▲ Next.js 15.1.0
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+
+[2m[176.05ms][22m [@tailwindcss/postcss] src/app/globals.css
+[2m[  0.04ms][22m  [2m ↳ [22mQuick bail check
+[2m[105.84ms][22m  [2m ↳ [22mSetup compiler
+[2m[  0.30ms][22m    [2m ↳ [22mPostCSS AST -> Tailwind CSS AST
+[2m[105.53ms][22m    [2m ↳ [22mCreate compiler
+[2m[  0.08ms][22m  [2m ↳ [22mRegister full rebuild paths
+[2m[  1.03ms][22m  [2m ↳ [22mSetup scanner
+[2m[  7.75ms][22m  [2m ↳ [22mScan for candidates
+[2m[  7.30ms][22m  [2m ↳ [22mRegister dependency messages
+[2m[ 20.85ms][22m  [2m ↳ [22mBuild utilities
+[2m[ 28.65ms][22m  [2m ↳ [22mOptimization
+[2m[  1.97ms][22m    [2m ↳ [22mAST -> CSS
+[2m[ 18.36ms][22m    [2m ↳ [22mLightning CSS
+[2m[  8.28ms][22m    [2m ↳ [22mCSS -> PostCSS AST
+[2m[  4.28ms][22m  [2m ↳ [22mUpdate PostCSS AST
+
+ ✓ Compiled successfully
+   Skipping linting
+   Checking validity of types ...
+   Collecting page data ...
+(node:86525) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:86524) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:86528) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:86526) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:86529) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:86523) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:86527) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+   Generating static pages (0/12) ...
+(node:86560) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+   Generating static pages (3/12) 
+   Generating static pages (6/12) 
+   Generating static pages (9/12) 
+ ✓ Generating static pages (12/12)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ƒ /                                    6.45 kB         211 kB
+├ ƒ /_not-found                          979 B           106 kB
+├ ƒ /api/[[...hono]]                     136 B           105 kB
+├ ƒ /applications/me                     22.3 kB         232 kB
+├ ƒ /campaigns/[id]                      6.07 kB         207 kB
+├ ƒ /campaigns/[id]/apply                5 kB            211 kB
+├ ƒ /dashboard                           1.99 kB         170 kB
+├ ƒ /dashboard/campaigns                 7.4 kB          230 kB
+├ ƒ /dashboard/campaigns/[id]            5.29 kB         222 kB
+├ ƒ /example                             2.98 kB         158 kB
+├ ƒ /login                               2.85 kB         174 kB
+├ ƒ /onboarding                          6.7 kB          198 kB
+└ ƒ /signup                              3.93 kB         189 kB
++ First Load JS shared by all            105 kB
+  ├ chunks/4bd1b696-7ddbb687a1b42c4c.js  52.9 kB
+  ├ chunks/517-95fb8b83c188bcbf.js       50.5 kB
+  └ other shared chunks (total)          1.92 kB
+
+
+ƒ  (Dynamic)  server-rendered on demand
+

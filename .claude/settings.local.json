@@ -6,7 +6,10 @@
       "Bash(git push:*)",
       "Bash(vercel:*)",
       "Bash(kill:*)",
-      "Bash(git merge:*)"
+      "Bash(git merge:*)",
+      "Bash(npm run build:*)",
+      "Bash(tee:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []
