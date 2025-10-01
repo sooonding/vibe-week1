@@ -6,9 +6,11 @@ import { getSessionToken } from '@/lib/supabase/get-session-token';
 import {
   ApplicationListResponseSchema,
   CampaignApplicationListResponseSchema,
+  ApplicationStatusResponseSchema,
   type CreateApplicationRequest,
   type ApplicationListResponse,
   type SelectApplicationsRequest,
+  type ApplicationStatusResponse,
 } from '../lib/dto';
 
 import type { z } from 'zod';
@@ -61,6 +63,23 @@ const selectApplications = async (params: { campaignId: number; selectedApplicat
   return data;
 };
 
+const fetchApplicationStatus = async (campaignId: number): Promise<ApplicationStatusResponse> => {
+  const token = await getSessionToken();
+  if (!token) {
+    return { hasApplied: false };
+  }
+
+  try {
+    const { data } = await apiClient.get(`/api/campaigns/${campaignId}/application-status`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    return ApplicationStatusResponseSchema.parse(data);
+  } catch {
+    return { hasApplied: false };
+  }
+};
+
 export const useCreateApplication = () => {
   const queryClient = useQueryClient();
 
@@ -107,3 +126,11 @@ export const useSelectApplications = () => {
     },
   });
 };
+
+export const useApplicationStatus = (campaignId: number) =>
+  useQuery({
+    queryKey: ['application-status', campaignId],
+    queryFn: () => fetchApplicationStatus(campaignId),
+    enabled: Boolean(campaignId),
+    staleTime: 60 * 1000,
+  });

@@ -5,6 +5,7 @@ export const ChannelInputSchema = z.object({
   platform: PlatformSchema,
   channelName: z.string().min(1, 'Channel name is required'),
   channelUrl: z.string().url('Invalid URL format'),
+  followerCount: z.number().int().min(0, 'Follower count must be non-negative'),
 });
 
 export type ChannelInput = z.infer<typeof ChannelInputSchema>;
@@ -23,6 +24,7 @@ export const InfluencerChannelResponseSchema = z.object({
   platform: PlatformSchema,
   channelName: z.string(),
   channelUrl: z.string().url(),
+  followerCount: z.number(),
   verificationStatus: VerificationStatusSchema,
 });
 
@@ -51,6 +53,7 @@ export const InfluencerChannelRowSchema = z.object({
   platform: PlatformSchema,
   channel_name: z.string(),
   channel_url: z.string(),
+  follower_count: z.number(),
   verification_status: VerificationStatusSchema,
   created_at: z.string(),
   updated_at: z.string(),

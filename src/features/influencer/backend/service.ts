@@ -65,6 +65,7 @@ export const createInfluencerProfile = async (
     platform: ch.platform,
     channel_name: ch.channelName,
     channel_url: ch.channelUrl,
+    follower_count: ch.followerCount,
     verification_status: 'pending' as const,
   }));
 
@@ -82,6 +83,7 @@ export const createInfluencerProfile = async (
     platform: ch.platform,
     channelName: ch.channel_name,
     channelUrl: ch.channel_url,
+    followerCount: ch.follower_count,
     verificationStatus: ch.verification_status,
   }));
 
@@ -132,6 +134,7 @@ export const getInfluencerProfileByUserId = async (
     platform: ch.platform,
     channelName: ch.channel_name,
     channelUrl: ch.channel_url,
+    followerCount: ch.follower_count,
     verificationStatus: ch.verification_status,
   }));
 

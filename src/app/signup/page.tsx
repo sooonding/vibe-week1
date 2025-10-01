@@ -134,19 +134,20 @@ export default function SignupPage({ params }: SignupPageProps) {
   }
 
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center justify-center gap-10 px-6 py-16">
-      <header className="flex flex-col items-center gap-3 text-center">
-        <h1 className="text-3xl font-semibold">회원가입</h1>
-        <p className="text-slate-500">
-          블로그 체험단 플랫폼에 가입하고 시작하세요
-        </p>
-      </header>
-      <div className="grid w-full gap-8 md:grid-cols-2">
+    <div className="min-h-screen w-full bg-background dark:bg-gray-900 pt-20 pb-16">
+      <div className="mx-auto max-w-6xl px-6">
+        <header className="flex flex-col items-center gap-3 text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground">회원가입 ✨</h1>
+          <p className="text-lg text-muted-foreground">
+            블로그 체험단 플랫폼에 가입하고 시작하세요
+          </p>
+        </header>
+        <div className="grid w-full gap-8 md:grid-cols-2 items-start">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-4 rounded-xl border border-slate-200 p-6 shadow-sm"
+          className="flex flex-col gap-5 rounded-3xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-8 shadow-xl"
         >
-          <label className="flex flex-col gap-2 text-sm text-slate-700">
+          <label className="flex flex-col gap-2 text-sm font-semibold text-foreground">
             이름
             <input
               type="text"
@@ -154,11 +155,11 @@ export default function SignupPage({ params }: SignupPageProps) {
               required
               value={formState.name}
               onChange={handleChange}
-              className="rounded-md border border-slate-300 px-3 py-2 focus:border-slate-500 focus:outline-none"
+              className="rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-foreground px-4 py-3 focus:border-primary focus:outline-none transition-colors"
             />
           </label>
 
-          <label className="flex flex-col gap-2 text-sm text-slate-700">
+          <label className="flex flex-col gap-2 text-sm font-semibold text-foreground">
             휴대폰번호
             <input
               type="tel"
@@ -167,11 +168,11 @@ export default function SignupPage({ params }: SignupPageProps) {
               required
               value={formState.phone}
               onChange={handleChange}
-              className="rounded-md border border-slate-300 px-3 py-2 focus:border-slate-500 focus:outline-none"
+              className="rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-foreground px-4 py-3 focus:border-primary focus:outline-none transition-colors placeholder:text-muted-foreground"
             />
           </label>
 
-          <label className="flex flex-col gap-2 text-sm text-slate-700">
+          <label className="flex flex-col gap-2 text-sm font-semibold text-foreground">
             이메일
             <input
               type="email"
@@ -180,11 +181,11 @@ export default function SignupPage({ params }: SignupPageProps) {
               required
               value={formState.email}
               onChange={handleChange}
-              className="rounded-md border border-slate-300 px-3 py-2 focus:border-slate-500 focus:outline-none"
+              className="rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-foreground px-4 py-3 focus:border-primary focus:outline-none transition-colors"
             />
           </label>
 
-          <label className="flex flex-col gap-2 text-sm text-slate-700">
+          <label className="flex flex-col gap-2 text-sm font-semibold text-foreground">
             비밀번호
             <input
               type="password"
@@ -193,11 +194,11 @@ export default function SignupPage({ params }: SignupPageProps) {
               required
               value={formState.password}
               onChange={handleChange}
-              className="rounded-md border border-slate-300 px-3 py-2 focus:border-slate-500 focus:outline-none"
+              className="rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-foreground px-4 py-3 focus:border-primary focus:outline-none transition-colors"
             />
           </label>
 
-          <label className="flex flex-col gap-2 text-sm text-slate-700">
+          <label className="flex flex-col gap-2 text-sm font-semibold text-foreground">
             비밀번호 확인
             <input
               type="password"
@@ -206,18 +207,18 @@ export default function SignupPage({ params }: SignupPageProps) {
               required
               value={formState.confirmPassword}
               onChange={handleChange}
-              className="rounded-md border border-slate-300 px-3 py-2 focus:border-slate-500 focus:outline-none"
+              className="rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-foreground px-4 py-3 focus:border-primary focus:outline-none transition-colors"
             />
           </label>
 
-          <label className="flex flex-col gap-2 text-sm text-slate-700">
+          <label className="flex flex-col gap-2 text-sm font-semibold text-foreground">
             역할
             <select
               name="role"
               required
               value={formState.role}
               onChange={handleChange}
-              className="rounded-md border border-slate-300 px-3 py-2 focus:border-slate-500 focus:outline-none"
+              className="rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-foreground px-4 py-3 focus:border-primary focus:outline-none transition-colors"
             >
               <option value="">선택하세요</option>
               <option value="influencer">인플루언서</option>
@@ -225,54 +226,54 @@ export default function SignupPage({ params }: SignupPageProps) {
             </select>
           </label>
 
-          <div className="flex flex-col gap-2 border-t border-slate-200 pt-4">
-            <label className="flex items-center gap-2 text-sm text-slate-700">
+          <div className="flex flex-col gap-3 border-t-2 border-gray-200 dark:border-gray-700 pt-5">
+            <label className="flex items-center gap-3 text-sm font-medium text-foreground cursor-pointer">
               <input
                 type="checkbox"
                 name="termsService"
                 checked={formState.termsService}
                 onChange={handleChange}
-                className="h-4 w-4"
+                className="h-5 w-5 rounded accent-primary cursor-pointer"
               />
               서비스 이용약관 동의 (필수)
             </label>
 
-            <label className="flex items-center gap-2 text-sm text-slate-700">
+            <label className="flex items-center gap-3 text-sm font-medium text-foreground cursor-pointer">
               <input
                 type="checkbox"
                 name="termsPrivacy"
                 checked={formState.termsPrivacy}
                 onChange={handleChange}
-                className="h-4 w-4"
+                className="h-5 w-5 rounded accent-primary cursor-pointer"
               />
               개인정보 처리방침 동의 (필수)
             </label>
           </div>
 
           {errorMessage ? (
-            <p className="text-sm text-rose-500">{errorMessage}</p>
+            <p className="text-sm text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded-xl px-4 py-3 border-2 border-red-200 dark:border-red-800">{errorMessage}</p>
           ) : null}
 
           <button
             type="submit"
             disabled={isSubmitting || isSubmitDisabled}
-            className="rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:bg-slate-400"
+            className="rounded-2xl bg-gradient-to-r from-primary to-accent px-6 py-4 text-base font-bold text-white transition-all hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100 disabled:hover:shadow-none"
           >
-            {isSubmitting ? "등록 중" : "회원가입"}
+            {isSubmitting ? "등록 중..." : "회원가입 🎉"}
           </button>
 
-          <p className="text-xs text-slate-500">
+          <p className="text-sm text-muted-foreground text-center">
             이미 계정이 있으신가요?{" "}
             <Link
               href="/login"
-              className="font-medium text-slate-700 underline hover:text-slate-900"
+              className="font-semibold text-primary underline hover:text-accent transition-colors"
             >
               로그인으로 이동
             </Link>
           </p>
         </form>
 
-        <figure className="overflow-hidden rounded-xl border border-slate-200">
+        <figure className="overflow-hidden rounded-3xl border-2 border-gray-200 dark:border-gray-700 shadow-xl h-[600px]">
           <Image
             src="https://picsum.photos/seed/signup/640/640"
             alt="회원가입"
@@ -282,6 +283,7 @@ export default function SignupPage({ params }: SignupPageProps) {
             priority
           />
         </figure>
+        </div>
       </div>
     </div>
   );
