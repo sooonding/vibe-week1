@@ -49,4 +49,5 @@ next-env.d.ts
 /.cursor/rules/ruler_cursor_instructions.mdc.bak
 /CLAUDE.md
 /CLAUDE.md.bak
+.ruler/
 # END Ruler Generated Files
