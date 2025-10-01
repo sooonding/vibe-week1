@@ -7,12 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
 import { useCurrentUser } from "@/features/auth/hooks/useCurrentUser";
 
-type LoginPageProps = {
-  params: Promise<Record<string, never>>;
-};
-
-export default function LoginPage({ params }: LoginPageProps) {
-  void params;
+export default function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { refresh, isAuthenticated } = useCurrentUser();

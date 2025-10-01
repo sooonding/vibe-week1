@@ -9,12 +9,7 @@ import { LoadingSpinner } from "@/components/shared/loading-spinner";
 import { ErrorMessage } from "@/components/shared/error-message";
 import type { ChannelInput } from "@/features/influencer/lib/dto";
 
-type OnboardingPageProps = {
-  params: Promise<Record<string, never>>;
-};
-
-export default function OnboardingPage({ params }: OnboardingPageProps) {
-  void params;
+export default function OnboardingPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const role = searchParams.get("role") as "influencer" | "advertiser" | null;

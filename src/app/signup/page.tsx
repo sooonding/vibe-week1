@@ -18,12 +18,7 @@ const defaultFormState = {
   termsPrivacy: false,
 };
 
-type SignupPageProps = {
-  params: Promise<Record<string, never>>;
-};
-
-export default function SignupPage({ params }: SignupPageProps) {
-  void params;
+export default function SignupPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { isAuthenticated, refresh } = useCurrentUser();

@@ -3,12 +3,7 @@
 import Image from "next/image";
 import { useCurrentUser } from "@/features/auth/hooks/useCurrentUser";
 
-type DashboardPageProps = {
-  params: Promise<Record<string, never>>;
-};
-
-export default function DashboardPage({ params }: DashboardPageProps) {
-  void params;
+export default function DashboardPage() {
   const { user } = useCurrentUser();
 
   return (

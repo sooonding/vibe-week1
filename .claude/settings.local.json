@@ -5,7 +5,8 @@
       "Bash(git add:*)",
       "Bash(git push:*)",
       "Bash(vercel:*)",
-      "Bash(kill:*)"
+      "Bash(kill:*)",
+      "Bash(git merge:*)"
     ],
     "deny": [],
     "ask": []
