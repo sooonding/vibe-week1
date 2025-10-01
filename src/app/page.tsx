@@ -11,12 +11,7 @@ import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { useAuth } from "@/hooks/useAuth";
 
-type HomePageProps = {
-  params: Promise<Record<string, never>>;
-};
-
-export default function HomePage({ params }: HomePageProps) {
-  void params;
+export default function HomePage() {
   const { data: recruitingData, isLoading: recruitingLoading, error: recruitingError } = useCampaigns("recruiting");
   const { data: selectedData, isLoading: selectedLoading, error: selectedError } = useCampaigns("selected");
   const { isAuthenticated } = useAuth();
