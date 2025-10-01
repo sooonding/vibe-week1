@@ -61,7 +61,7 @@ function InfluencerOnboarding() {
       e.preventDefault();
       const validChannels = channels.map(ch => ({
         ...ch,
-        followerCount: ch.followerCount === "" ? 0 : Number(ch.followerCount)
+        followerCount: typeof ch.followerCount === "string" && ch.followerCount === "" ? 0 : Number(ch.followerCount)
       }));
       mutate(
         { birthDate, channels: validChannels },
